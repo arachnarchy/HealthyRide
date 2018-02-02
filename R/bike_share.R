@@ -143,8 +143,8 @@ print(ddply(hrStations, .(clust), summarize, net = mean(net)))
 color<- brewer.pal(nclust, "Set1")
 
 # draw chord diagram
-pdf("figures/plot1a.pdf")
-plot1a<- chordDiagram(cluster_to_cluster, color)
+pdf("figures/plot2.pdf")
+plot2<- chordDiagram(cluster_to_cluster, color)
 title("Bike rides to/from station clusters")
 dev.off()
 
@@ -162,7 +162,7 @@ mapPGH <-
 
 # plot the map with some points on it
 
-plot1b<- ggmap(mapPGH, extent = "device") +
+plot1<- ggmap(mapPGH, extent = "device") +
   geom_point(
     data = hrStations[hrStations$clust == 1, ],
     fill = color[1],
@@ -206,13 +206,13 @@ plot1b<- ggmap(mapPGH, extent = "device") +
     shape = 21
   )
 
-pdf("figures/plot1b.pdf")
-plot1b
+pdf("figures/plot1.pdf")
+plot1
 dev.off()
 
 # plot number of pick-ups as interpolated heat map
 
-plot2 <- ggmap(mapPGH, extent = "device") +
+plot3 <- ggmap(mapPGH, extent = "device") +
   geom_density2d(data = hrNoNa,
                  aes(x = from.longitude, y = from.latitude),
                  size = 0.5) +
@@ -226,8 +226,8 @@ plot2 <- ggmap(mapPGH, extent = "device") +
   scale_fill_gradient(low = "white", high = "red") +
   ggtitle("Number of bike pickups by area")
 
-pdf("figures/plot2.pdf")
-plot2
+pdf("figures/plot3.pdf")
+plot3
 dev.off()
 
 save.image()
