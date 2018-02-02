@@ -1,11 +1,16 @@
 ---
-title: "HealthyRide usage during first 3 months after launch"
-output: html_document
+title: "HealthyRide Pittsburgh"
+output: 
+  html_document:
+    theme: null
+    highlight: null
+    mathjax: null
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-source("R/bike_share.r")
+library(circlize)
+load(".RData")
 ```
 
 `r sprintf("HealthyRide recorded a total of %s trips in the first three months of operation, with an average trip duration of %s minutes.", nrow(hr), round(mean(hr$TripDuration) /60, 2))`

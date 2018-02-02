@@ -136,8 +136,6 @@ print(ddply(hrNoNa, .(TripType), summarize,
             number = length(TripType)))
 
 # which stations lose, which stations get bikes? 
-# Cluster 5 gets the most, it's in the center. 
-# Clusters 1 and 6 lose the most, they're the most peripheral
 print(ddply(hrStations, .(clust), summarize, net = mean(net)))
 
 # plot figures ------------------------------------------------------------
