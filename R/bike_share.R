@@ -116,7 +116,7 @@ cluster_to_cluster<- as.matrix(cluster_to_cluster)
 
 # run some stats ----------------------------------------------------------
 
-message(sprintf(
+print(sprintf(
   "Total trips recorded in the first three months of Healthy Ride: %s",
   nrow(hr)
 ))
@@ -163,8 +163,8 @@ mapPGH <-
   )
 
 # plot the map with some points on it
-pdf("figures/plot1b.pdf")
-ggmap(mapPGH, extent = "device") +
+
+plot1b<- ggmap(mapPGH, extent = "device") +
   geom_point(
     data = hrStations[hrStations$clust == 1, ],
     fill = color[1],
@@ -208,11 +208,13 @@ ggmap(mapPGH, extent = "device") +
     shape = 21
   )
 
+pdf("figures/plot1b.pdf")
+plot1b
 dev.off()
 
 # plot number of pick-ups as interpolated heat map
-pdf("figures/plot2.pdf")
-ggmap(mapPGH, extent = "device") +
+
+plot2 <- ggmap(mapPGH, extent = "device") +
   geom_density2d(data = hrNoNa,
                  aes(x = from.longitude, y = from.latitude),
                  size = 0.5) +
@@ -226,5 +228,9 @@ ggmap(mapPGH, extent = "device") +
   scale_fill_gradient(low = "white", high = "red") +
   ggtitle("Number of bike pickups by area")
 
+pdf("figures/plot2.pdf")
+plot2
 dev.off()
+
+#save.image()
 

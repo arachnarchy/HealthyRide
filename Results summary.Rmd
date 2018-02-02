@@ -1,0 +1,22 @@
+---
+title: "HealthyRide usage during first 3 months after launch"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("R/bike_share.r")
+```
+
+`r sprintf("HealthyRide recorded a total of %s trips in the first three months of operation, with an average trip duration of %s minutes.", nrow(hr), round(mean(hr$TripDuration) /60, 2))`
+
+### Usage by location
+
+Stations were clustered by proximity (colors,  figure 1). Flow of bicycles within and between station clusters are visualized with a chord plot (figure 2), chords ending in another cluster take bikes from there. The downtown clusters 1 and 2 are the most attractive, which is also born out by the number of bike pickups there (figure 3).
+
+```{r, echo=FALSE}
+plot1b
+plot1a<- chordDiagram(cluster_to_cluster, color)
+title("Bike rides to/from station clusters")
+plot2
+```
