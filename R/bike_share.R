@@ -230,5 +230,5 @@ pdf("figures/plot2.pdf")
 plot2
 dev.off()
 
-#save.image()
+save.image()
 

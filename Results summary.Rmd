@@ -1,10 +1,8 @@
 ---
 title: "HealthyRide Pittsburgh"
 output: 
-  html_document:
+  html_document: 
     theme: null
-    highlight: null
-    mathjax: null
 ---
 
 ```{r setup, include=FALSE}
